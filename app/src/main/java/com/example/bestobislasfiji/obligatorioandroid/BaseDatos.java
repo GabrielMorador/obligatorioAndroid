@@ -19,7 +19,7 @@ public final class BaseDatos {
     //"create table producto(id int primary key , categoria text ,nombreProducto text ,precio real, descripcion text , foto blob )");
     public static abstract class Prodctos implements BaseColumns
     {
-        public static final String ID_PRODUCTO="IdProducto";
+     //   public static final String ID_PRODUCTO="IdProducto";
         public static final String CATEGORIA="Categoria";
         public static final String NOMBRE_PRODUCTO="NombreProducto";
         public static final String PRECIO="Precio";
@@ -27,19 +27,27 @@ public final class BaseDatos {
 
 
         public static final String[] COLUMNAS_PRODUCTOS={
-                ID_PRODUCTO,CATEGORIA,NOMBRE_PRODUCTO,PRECIO,FOTO
+                _ID,CATEGORIA,NOMBRE_PRODUCTO,PRECIO,FOTO
+                //_ID,ID_PRODUCTO,CATEGORIA,NOMBRE_PRODUCTO,PRECIO,FOTO
+        } ;
+
+        public static final String[] CATEGORIAS_PRODUCTO={
+                CATEGORIA
+                //_ID,ID_PRODUCTO,CATEGORIA,NOMBRE_PRODUCTO,PRECIO,FOTO
         } ;
 
         public static final String SQL_CREAR_TABLA_PRODUCTOS=new StringBuilder("CREATE TABLE ")
                 .append(PRODUCTOS).append(" (")
-                .append(ID_PRODUCTO).append(" integer primary key autoincrement, ")
+                .append(_ID).append(" integer primary key  autoincrement, ")
+                //.append(ID_PRODUCTO).append(" integer primary key autoincrement, ")
                 .append(CATEGORIA).append(" text not null, ")
                 .append(NOMBRE_PRODUCTO).append(" text not null, ")
+                .append(PRECIO).append(" real not null, ")
                 .append(FOTO).append(" blob );")
                 .toString();
 
         public static final String SQL_ELIMINAR_TABLA_PRODUCTOS=new StringBuilder("DROP TABLE IF EXISTS ")
-                .append(PRECIO)
+                .append(PRODUCTOS)
                 .append(";")
                 .toString();
     }
@@ -54,12 +62,13 @@ public final class BaseDatos {
         public static final String ID_PRODUCTO="IdProducto";
 
         public static final String[] COLUMNAS_PEDIDOS={
-                ID_PAGO,PAGO_ADELANTADO,NOMBRE_CLIENTE,CANTIDAD,ID_PRODUCTO
+                _ID,ID_PAGO,PAGO_ADELANTADO,NOMBRE_CLIENTE,CANTIDAD,ID_PRODUCTO
     } ;
 
         public static final String SQL_CREAR_TABLA_PEDIDOS=new StringBuilder("CREATE TABLE ")
                 .append(PEDIDOS)
                 .append(" (")
+                .append(_ID).append(" integer primary key autoincrement, ")
                 .append(ID_PAGO).append(" integer  primary key , ")
                 .append(PAGO_ADELANTADO).append(" integer not null , ")
                 .append(NOMBRE_CLIENTE).append(" text not null, ")

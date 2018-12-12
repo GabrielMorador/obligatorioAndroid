@@ -26,11 +26,34 @@ public class AdminSQLiteHelper extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase bio) {
-
+    //    bio.execSQL(BaseDatos.Prodctos.SQL_ELIMINAR_TABLA_PRODUCTOS);
         bio.execSQL(BaseDatos.Prodctos.SQL_CREAR_TABLA_PRODUCTOS);
      //   bio.execSQL(BaseDatos.Pedidos.SQL_CREAR_TABLA_PEDIDOS);
 
+
         bio.execSQL(new StringBuilder("insert into ")
+                .append(BaseDatos.PRODUCTOS)
+                .append(" values(null,'Vehículos','Toyota AE86',25.50,null);")
+                .toString());
+
+        bio.execSQL(new StringBuilder("insert into ")
+                .append(BaseDatos.PRODUCTOS)
+                .append(" values(null,'Vehículos','Subaru Impreza',55555.50,null);")
+                .toString());
+
+        bio.execSQL(new StringBuilder("insert into ")
+                .append(BaseDatos.PRODUCTOS)
+                .append(" values(null,'Empanadas','de jamon y queso',10.50,null);")
+                .toString());
+
+        bio.execSQL(new StringBuilder("insert into ")
+                .append(BaseDatos.PRODUCTOS)
+                .append(" values(null,'Empanadas','De carne',50.00,null);")
+                .toString());
+
+
+
+        /*bio.execSQL(new StringBuilder("insert into ")
         .append(BaseDatos.PRODUCTOS)
                 .append("(")
                 .append(BaseDatos.Prodctos.CATEGORIA)
@@ -38,7 +61,8 @@ public class AdminSQLiteHelper extends SQLiteOpenHelper{
                 .append(BaseDatos.Prodctos.NOMBRE_PRODUCTO)
                 .append(",")
                 .append(BaseDatos.Prodctos.PRECIO)
-        .append(" values('Vehículos,'Toyota AE86',25.50);")
+                .append(")")
+        .append(" values('Vehículos','Toyota AE86',25.50);")
         .toString());
 
         bio.execSQL(new StringBuilder("insert into ")
@@ -49,7 +73,8 @@ public class AdminSQLiteHelper extends SQLiteOpenHelper{
                 .append(BaseDatos.Prodctos.NOMBRE_PRODUCTO)
                 .append(",")
                 .append(BaseDatos.Prodctos.PRECIO)
-                .append(" values('Vehículos,'Subaru Impreza',55555.50,'cosos',' ');")
+                .append(")")
+                .append(" values('Vehículos','Subaru Impreza',55555.50);")
                 .toString());
 
         bio.execSQL(new StringBuilder("insert into ")
@@ -60,7 +85,8 @@ public class AdminSQLiteHelper extends SQLiteOpenHelper{
                 .append(BaseDatos.Prodctos.NOMBRE_PRODUCTO)
                 .append(",")
                 .append(BaseDatos.Prodctos.PRECIO)
-                .append(" values('Empanadas,'de jamon y queso',10.50);")
+                .append(")")
+                .append(" values('Empanadas','de jamon y queso',10.50);")
                 .toString());
 
         bio.execSQL(new StringBuilder("insert into ")
@@ -71,8 +97,9 @@ public class AdminSQLiteHelper extends SQLiteOpenHelper{
                 .append(BaseDatos.Prodctos.NOMBRE_PRODUCTO)
                 .append(",")
                 .append(BaseDatos.Prodctos.PRECIO)
-                .append(" values('Empanadas,'De carne',50.00);")
-                .toString());
+                .append(")")
+                .append(" values('Empanadas','De carne',50.00);")
+                .toString());*/
 
       //  bio.execSQL("create table producto(id int primary key , categoria text ,nombreProducto text ,precio real, descripcion text , foto blob )");
         // bio.execSQL("create table pedido(idPedido int primary key autoincrement , pagoAdelantado int ,nombreCliente text, cantidad int,idProducto int, FOREIGN KEY(idProducto) REFERENCES producto(id))");
