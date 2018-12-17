@@ -1,11 +1,24 @@
 package com.example.bestobislasfiji.obligatorioandroid;
 
+import android.content.ContentValues;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
+import android.widget.TextView;
+
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 
 public class ListadoCategoriasActivity extends AppCompatActivity {
 
@@ -16,10 +29,17 @@ public class ListadoCategoriasActivity extends AppCompatActivity {
     private SimpleCursorAdapter adaptadorCategorias;
     protected ListadoCategoriasFragment frgListadoCategorias;
 
+    //EXTRAS
+    //public static final String EXTRA_FOTO="EXTRA_FOTO";
+    //public static final String EXTRA_NOMBRE_PROD="EXTRA_NOMBRE_PROD";
+    //public static final String EXTRA_PRECIO="EXTRA_PRECIO";
+    public static final String EXTRA_CATEGORIA="EXTRA_CATEGORIA";
+    private String categoria;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setTitle("Categorías");
         //setContentView(R.layout.activity_listado_categorias);
 
 
@@ -45,9 +65,16 @@ public class ListadoCategoriasActivity extends AppCompatActivity {
 
         //int columnaId = cursor.getColumnIndex(BaseDatos.Prodctos._ID);
 
+        lvCategorias.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                lvCategoriasOnItemClick(parent, view, position, id);
+            }
+
+        });
+
     }
-
-
 
     protected Cursor listarCategorias() {
 
@@ -69,5 +96,26 @@ public class ListadoCategoriasActivity extends AppCompatActivity {
         BD.close();
 
       //  BdHelper.eliminarBaseDatos();
+    }
+
+    protected void lvCategoriasOnItemClick(AdapterView<?> parent, View view , int position, long id)
+    {
+        Intent intencionProductosCategoria=new Intent(this,ListadoProductosXCategoriaAct.class);
+       // ListadoProductosXCategoriaFrag frgListadoProductos=(ListadoProductosXCategoriaFrag)getSupportFragmentManager().findFragmentById(R.id.frgListadoProdXCat);
+
+        //Bundle datosProducto=new Bundle();
+       // categoria= (String)parent.getItemAtPosition(position);
+
+        categoria =((TextView)view.findViewById(R.id.tvCategoria)).getText().toString();
+        //categoria=(lvCategorias.getItemAtPosition(position).toString());
+        //categoria="Vehículos";
+
+        /*if (frgListadoProductos != null) {
+            frgListadoProductos.mostrarProductos(empleado);
+        } else {*/
+            intencionProductosCategoria.putExtra(EXTRA_CATEGORIA, categoria);
+
+            startActivity(intencionProductosCategoria);
+       // }
     }
 }

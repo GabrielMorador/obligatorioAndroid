@@ -16,10 +16,10 @@ public class ListadoCategoriasFragment extends Fragment {
 
     protected ListView lvCategorias;
 
-    private AdminSQLiteHelper BdHelper;
+  /*  private AdminSQLiteHelper BdHelper;
     private SQLiteDatabase BD;
     private SimpleCursorAdapter adaptadorCategorias;
-
+*/
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_listado_categorias, container, false);

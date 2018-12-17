@@ -21,6 +21,8 @@
         </activity>
 
         <activity android:name=".ListadoCategoriasActivity" />
+        <activity android:name=".ListadoProductosXCategoriaAct" />
+        <activity android:name=".DetalleProductoActivity" />
     </application>
 
 </manifest>
