@@ -85,8 +85,10 @@ public final class BaseDatos {
                 .append(PAGO_ADELANTADO).append(" integer not null , ")
                 .append(NOMBRE_CLIENTE).append(" text not null, ")
                 .append(CANTIDAD).append(" real not null , ")
-                .append(ENTREGADO).append("integer not null default 0, ")
-                .append(ID_PRODUCTO).append("integer not null, FOREIGN KEY (IdProducto) REFERENCES Productos(IdProducto));")
+                .append(ENTREGADO).append(" integer not null default 0, ")
+                .append(ID_PRODUCTO).append(" integer not null, ")
+                .append(" FOREIGN KEY (IdProducto) REFERENCES Productos(_id));")
+                //.append("integer not null, FOREIGN KEY (IdProducto) REFERENCES Productos(_id));")
                 .toString();
 
         public static final String SQL_ELIMINAR_TABLA_PEDIDOS=new StringBuilder("DROP TABLE ")

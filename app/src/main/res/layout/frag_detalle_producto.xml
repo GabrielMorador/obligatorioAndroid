@@ -178,6 +178,7 @@
                     android:layout_below="@+id/chbPagoAdelantado"
                     android:text="Realizar pedido"
                     android:layout_centerHorizontal="true"
+                    android:onClick="btnRealizarPedidoOnClick"
                     />
                 <!--android:onClick="btnRealizarPedidoOnClick" -->
 

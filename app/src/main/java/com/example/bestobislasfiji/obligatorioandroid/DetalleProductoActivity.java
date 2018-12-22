@@ -41,11 +41,11 @@ public class DetalleProductoActivity extends AppCompatActivity {
 
 
 
-   /* protected EditText etCantidad;
+    protected EditText etCantidad;
     protected TextView tvPrecio;
     protected TextView tvId;
     protected ImageView imgProducto;
-    protected CheckBox chbPagaAdelantado;*/
+    protected CheckBox chbPagaAdelantado;
 
     public static final String EXTRA_NOMBRE="EXTRA_NOMBRE";
     //private String nombre;
@@ -63,6 +63,9 @@ public class DetalleProductoActivity extends AppCompatActivity {
 
         frgDetalleProducto = (DetalleProductoFragment)getSupportFragmentManager().findFragmentById(R.id.frgDetalleEmpleado);
 
+        BdHelper = new AdminSQLiteHelper(this);
+        BD = BdHelper.getWritableDatabase();
+
         Bundle extras = getIntent().getExtras();
         id=extras.getInt(ListadoProductosXCategoriaAct.EXTRA_ID);
         nombre=extras.getString(ListadoProductosXCategoriaAct.EXTRA_NOMBRE);
@@ -73,13 +76,13 @@ public class DetalleProductoActivity extends AppCompatActivity {
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
-       /* actCliente = (AutoCompleteTextView)findViewById(R.id.actCliente);
+        actCliente = (AutoCompleteTextView)findViewById(R.id.actCliente);
         etCantidad = (EditText) findViewById(R.id.etCantidad);
         tvPrecio = (TextView)findViewById(R.id.tvPrecio);
         imgProducto=(ImageView)findViewById(R.id.imgProducto);
         tvPrecio = (TextView)findViewById(R.id.tvPrecio);
-        tvId=(TextView)findViewById(R.id.tvId);
-        chbPagaAdelantado=(CheckBox)findViewById(R.id.chbPagoAdelantado);*/
+        tvId=(TextView)findViewById(R.id.tvIdProd);
+        chbPagaAdelantado=(CheckBox)findViewById(R.id.chbPagoAdelantado);
 
 
     }
@@ -91,15 +94,15 @@ public class DetalleProductoActivity extends AppCompatActivity {
         frgDetalleProducto.mostrarDetalleProducto(id,nombre,descripcion,precio);
     }
 
-   /* public void btnRealizarPedidoOnClick(View view) {
+    public void btnRealizarPedidoOnClick(View view) {
 
         ContentValues valores = new ContentValues();
 
-        BD.beginTransaction();
+       // BD.beginTransaction();
 //_ID,ID_PAGO,PAGO_ADELANTADO,NOMBRE_CLIENTE,CANTIDAD,ENTREGADO,ID_PRODUCTO
         try {
 
-
+Intent volverAListaCategorias=new Intent(this,ListadoCategoriasActivity.class);
             valores.put(BaseDatos.Pedidos.ID_PRODUCTO, Integer.parseInt(tvId.getText().toString()));
             valores.put(BaseDatos.Pedidos.CANTIDAD, Integer.parseInt(etCantidad.getText().toString()));
             valores.put(BaseDatos.Pedidos.NOMBRE_CLIENTE,actCliente.getText().toString());
@@ -112,12 +115,14 @@ public class DetalleProductoActivity extends AppCompatActivity {
             }
             BD.insert(BaseDatos.PEDIDOS, null, valores);
 
-            BD.setTransactionSuccessful();
+          //  BD.setTransactionSuccessful();
+            Toast.makeText(this, "Pedido realizado exitasmente.", Toast.LENGTH_LONG).show();
+            startActivity(volverAListaCategorias);
         } catch (Exception ex) {
 
-            Toast.makeText(this, "No se ha podido realizar el pedido :(", Toast.LENGTH_SHORT).show();
-        } finally {
+            Toast.makeText(this, "No se ha podido realizar el pedido :(", Toast.LENGTH_LONG).show();
+        } /*finally {
             BD.endTransaction();
-        }
-    }*/
+        }*/
+    }
 }

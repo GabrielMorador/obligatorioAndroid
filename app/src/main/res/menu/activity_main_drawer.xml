@@ -6,8 +6,12 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/categorias"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/categorias"
             android:title="Categorías" />
+        <item
+            android:id="@+id/pedidosPendientesEntrega"
+            android:icon="@drawable/pedidos_pend_entrega"
+            android:title="Pedidos Pendientes de entrega" />
     </group>
 
 </menu>
