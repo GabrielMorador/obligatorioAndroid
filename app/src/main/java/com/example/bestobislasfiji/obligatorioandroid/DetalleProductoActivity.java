@@ -118,6 +118,7 @@ Intent volverAListaCategorias=new Intent(this,ListadoCategoriasActivity.class);
           //  BD.setTransactionSuccessful();
             Toast.makeText(this, "Pedido realizado exitasmente.", Toast.LENGTH_LONG).show();
             startActivity(volverAListaCategorias);
+            finish();
         } catch (Exception ex) {
 
             Toast.makeText(this, "No se ha podido realizar el pedido :(", Toast.LENGTH_LONG).show();

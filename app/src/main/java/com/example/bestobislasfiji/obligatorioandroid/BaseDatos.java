@@ -47,6 +47,8 @@ public final class BaseDatos {
                 //_ID,ID_PRODUCTO,CATEGORIA,NOMBRE_PRODUCTO,PRECIO,FOTO
         } ;
 
+
+
         public static final String SQL_CREAR_TABLA_PRODUCTOS=new StringBuilder("CREATE TABLE ")
                 .append(PRODUCTOS).append(" (")
                 .append(_ID).append(" integer primary key  autoincrement, ")
@@ -77,6 +79,10 @@ public final class BaseDatos {
         public static final String[] COLUMNAS_PEDIDOS={
                 _ID,PAGO_ADELANTADO,NOMBRE_CLIENTE,CANTIDAD,ENTREGADO,ID_PRODUCTO
     } ;
+
+        public static final String[] COLUMNAS_PEDIDOS_PEND={
+                Pedidos._ID,Prodctos.NOMBRE_PRODUCTO,CANTIDAD
+        } ;
 
         public static final String SQL_CREAR_TABLA_PEDIDOS=new StringBuilder("CREATE TABLE ")
                 .append(PEDIDOS)

@@ -49,7 +49,7 @@ public class DetalleProductoFragment extends Fragment {
     public void mostrarDetalleProducto(Integer id,String nombre,String descripcion,Double precio) {
         tvNombreProd.setText(nombre);
         tvDescripcion.setText(descripcion);
-        tvPrecio.setText(precio.toString());
+        tvPrecio.setText("$ "+precio.toString());
         tvIdProd.setText(id.toString());
 
         if(nombre.equals("Toyota AE86"))

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+  >
+    <!--public static final String PAGO_ADELANTADO="PagoAdelantado";
+    public static final String NOMBRE_CLIENTE="NombreCliente";
+    public static final String CANTIDAD="Cantidad";
+    public static final String ENTREGADO="Entregado";
+    public static final String ID_PRODUCTO="IdProducto";-->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/llId">
+    <TextView
+        android:id="@+id/lblIdPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold|italic"
+        android:text="ID del pedido:"/>
+
+    <TextView
+        android:id="@+id/tvIdPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold|italic"
+        android:layout_marginLeft="5dp"
+        />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/llProducto"
+        android:layout_below="@id/llId"
+        >
+    <TextView
+        android:id="@+id/lblvProdPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        android:text="Producto: "/>
+
+    <TextView
+        android:id="@+id/tvtvProdPedido"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        android:layout_marginLeft="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/llCantidad"
+        android:layout_below="@id/llProducto"
+        >
+    <TextView
+        android:id="@+id/lblCantidadProd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+        android:text="Cantidad: "/>
+
+    <TextView
+        android:id="@+id/tvCantidadProd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold|italic"
+    android:layout_marginLeft="5dp"/>
+</LinearLayout>
+</RelativeLayout>

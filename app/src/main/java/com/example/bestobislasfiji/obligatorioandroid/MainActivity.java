@@ -78,6 +78,10 @@ public class MainActivity extends AppCompatActivity
             Intent i = new Intent(this, ListadoCategoriasActivity.class);
             startActivity(i);
         }
+        else if (id == R.id.pedidosPendientesEntrega) {
+            Intent i = new Intent(this, ListadoPedidosPendEntAct.class);
+            startActivity(i);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

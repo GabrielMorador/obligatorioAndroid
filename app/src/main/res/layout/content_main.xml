@@ -8,14 +8,24 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-
     <TextView
+        android:id="@+id/tvMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_centerInParent="true"
-        android:textSize="30dp"
-        android:text="Bienvenido a Bió. \n Seleccione una categoría de producto en el menú"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:layout_marginTop="25dp"
+        android:text="Bienvenido a Bió. \n Seleccione una opción del menú."
         android:fontFamily="sans-serif-condensed"/>
+
+    <ImageView
+        android:id="@+id/imgFondo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvMain"
+        android:src="@drawable/fondo_main"/>
+
+
 
 </RelativeLayout>
