@@ -8,10 +8,10 @@
     >
 
     <fragment
-        android:id="@+id/frgListadoProdXCat"
+        android:id="@+id/frgListadoPedidosPend"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:name="com.example.bestobislasfiji.obligatorioandroid.ListadoProductosXCategoriaFrag"
-        tools:layout="@layout/frag_listado_prod_x_cat_layout" />
+        android:name="com.example.bestobislasfiji.obligatorioandroid.ListadoPedidosPendEntFrag"
+        tools:layout="@layout/frag_pedidos_pend_entrega" />
 
 </RelativeLayout>
