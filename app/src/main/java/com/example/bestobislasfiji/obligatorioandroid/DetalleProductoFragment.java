@@ -1,15 +1,21 @@
 package com.example.bestobislasfiji.obligatorioandroid;
 
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -20,9 +26,10 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
-public class DetalleProductoFragment extends Fragment {
+import java.util.ArrayList;
+
+public class DetalleProductoFragment extends Fragment implements TextView.OnEditorActionListener{
 
     public static DetalleProductoFragment newInstance() {
         return new DetalleProductoFragment();
@@ -47,6 +54,8 @@ public class DetalleProductoFragment extends Fragment {
     protected TextView tvId;
     protected CheckBox chbPagaAdelantado;
     protected Button btnRealizarPedido;
+
+    protected Cursor adaptadorClientesSQL;
 
     public DetalleProductoFragment() {
 
@@ -77,7 +86,6 @@ public class DetalleProductoFragment extends Fragment {
         rlDetalleProducto=(RelativeLayout)getView().findViewById(R.id.rlDetalleProducto);
 
         btnRealizarPedido=(Button)getView().findViewById(R.id.btnRealizarPedido);
-        //btnRealizarPedido.setOnClickListener(new View.OnClickListener());
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
 
@@ -86,7 +94,24 @@ public class DetalleProductoFragment extends Fragment {
         tvId=(TextView)getView().findViewById(R.id.tvIdProd);
         chbPagaAdelantado=(CheckBox)getView().findViewById(R.id.chbPagoAdelantado);
 
-       // btnRealizarPedido=(Button)findViewById(R.id.btnRealizarPedido);
+
+        adaptadorClientesSQL=listarClientes();
+        ArrayList<String> listaClientes = new ArrayList<String>();
+        while (adaptadorClientesSQL.moveToNext())
+        {
+            listaClientes.add(adaptadorClientesSQL.getString(adaptadorClientesSQL.getColumnIndex(BaseDatos.Pedidos.NOMBRE_CLIENTE)));
+        }
+
+        ArrayAdapter<String> adaptadorClientes=new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1,listaClientes);
+        actCliente.setAdapter(adaptadorClientes);
+
+        actCliente.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                actvClientesOnItemClick(parent , view , position , id);
+
+            }
+        });
 
         btnRealizarPedido.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +135,7 @@ public class DetalleProductoFragment extends Fragment {
                     BD.insert(BaseDatos.PEDIDOS, null, valores);
 
 
-                    Toast.makeText(getActivity(), "Pedido realizado exitasmente.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), "Pedido realizado exotisamente.", Toast.LENGTH_LONG).show();
                     startActivity(volverAListaCategorias);
                     getActivity().finish();
                 } catch (Exception ex) {
@@ -121,6 +146,40 @@ public class DetalleProductoFragment extends Fragment {
         });
     }
 
+
+    public Cursor listarClientes() {
+
+        return BD.query(BaseDatos.PEDIDOS,BaseDatos.Pedidos.COLUMNAS_PEDIDOS, null, null, BaseDatos.Pedidos.NOMBRE_CLIENTE, null, null);
+
+    }
+
+
+    protected void actvClientesOnItemClick(AdapterView<?> parent,View view , int position , long id )
+    {
+        ocultarTecladoYMostrarClienteSeleccionado();
+    }
+
+    protected void ocultarTecladoYMostrarClienteSeleccionado()
+    {
+        InputMethodManager gestorMetodoEntrada = (InputMethodManager)actCliente.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+        gestorMetodoEntrada.hideSoftInputFromWindow(actCliente.getWindowToken(), 0 );
+
+    }
+
+    @Override
+    public boolean onEditorAction(TextView textView , int actionId, KeyEvent keyEvent)
+    {
+        boolean manejado=false;
+
+        if(actionId==1000)
+        {
+            ocultarTecladoYMostrarClienteSeleccionado();
+
+            manejado=true;
+        }
+        return manejado;
+
+    }
 
     public void mostrarDetalleProducto(Integer id,String nombre,String descripcion,Double precio) {
         cosoScroll.setVisibility(View.VISIBLE);

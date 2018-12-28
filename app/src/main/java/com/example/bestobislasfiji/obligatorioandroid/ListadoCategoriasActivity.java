@@ -1,24 +1,15 @@
 package com.example.bestobislasfiji.obligatorioandroid;
 
-import android.content.ContentValues;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
-
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 
 public class ListadoCategoriasActivity extends AppCompatActivity {
 

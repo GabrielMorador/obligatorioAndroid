@@ -16,43 +16,36 @@ public final class BaseDatos {
 
     }
 
-    //"create table producto(id int primary key , categoria text ,nombreProducto text ,precio real, descripcion text , foto blob )");
-    public static abstract class Prodctos implements BaseColumns
-    {
-     //   public static final String ID_PRODUCTO="IdProducto";
-        public static final String CATEGORIA="Categoria";
-        public static final String NOMBRE_PRODUCTO="NombreProducto";
-        public static final String PRECIO="Precio";
-        public static final String DESCRIPCION="Descripcion";
-        public static final String FOTO="Foto";
+
+    public static abstract class Prodctos implements BaseColumns {
+
+        public static final String CATEGORIA = "Categoria";
+        public static final String NOMBRE_PRODUCTO = "NombreProducto";
+        public static final String PRECIO = "Precio";
+        public static final String DESCRIPCION = "Descripcion";
+        public static final String FOTO = "Foto";
 
 
-        public static final String[] COLUMNAS_PRODUCTOS={
-                _ID,CATEGORIA,NOMBRE_PRODUCTO,DESCRIPCION,PRECIO,FOTO
-                //_ID,ID_PRODUCTO,CATEGORIA,NOMBRE_PRODUCTO,PRECIO,FOTO
-        } ;
+        public static final String[] COLUMNAS_PRODUCTOS = {
+                _ID, CATEGORIA, NOMBRE_PRODUCTO, DESCRIPCION, PRECIO, FOTO
+        };
 
-        public static final String[] DETALLE_PRODUCTO={
-                NOMBRE_PRODUCTO,DESCRIPCION,PRECIO
-                //_ID,ID_PRODUCTO,CATEGORIA,NOMBRE_PRODUCTO,PRECIO,FOTO
-        } ;
+        public static final String[] DETALLE_PRODUCTO = {
+                NOMBRE_PRODUCTO, DESCRIPCION, PRECIO
+        };
 
-        public static final String[] CATEGORIAS_PRODUCTO={
+        public static final String[] CATEGORIAS_PRODUCTO = {
                 CATEGORIA
-                //_ID,ID_PRODUCTO,CATEGORIA,NOMBRE_PRODUCTO,PRECIO,FOTO
-        } ;
+        };
 
-        public static final String[] PRODUCTOS_LIST={
+        public static final String[] PRODUCTOS_LIST = {
                 NOMBRE_PRODUCTO
-                //_ID,ID_PRODUCTO,CATEGORIA,NOMBRE_PRODUCTO,PRECIO,FOTO
-        } ;
+        };
 
 
-
-        public static final String SQL_CREAR_TABLA_PRODUCTOS=new StringBuilder("CREATE TABLE ")
+        public static final String SQL_CREAR_TABLA_PRODUCTOS = new StringBuilder("CREATE TABLE ")
                 .append(PRODUCTOS).append(" (")
                 .append(_ID).append(" integer primary key  autoincrement, ")
-                //.append(ID_PRODUCTO).append(" integer primary key autoincrement, ")
                 .append(CATEGORIA).append(" text not null, ")
                 .append(NOMBRE_PRODUCTO).append(" text not null, ")
                 .append(DESCRIPCION).append(" text not null, ")
@@ -60,13 +53,8 @@ public final class BaseDatos {
                 .append(FOTO).append(" blob );")
                 .toString();
 
-        public static final String SQL_ELIMINAR_TABLA_PRODUCTOS=new StringBuilder("DROP TABLE IF EXISTS ")
-                .append(PRODUCTOS)
-                .append(";")
-                .toString();
     }
 
-    //   bio.execSQL("create table pedido(idPedido int primary key autoincrement , pagoAdelantado int ,nombreCliente text, cantidad int,idProducto int, FOREIGN KEY(idProducto) REFERENCES producto(id))");
     public static abstract class Pedidos implements BaseColumns
     {
         public static final String ID_PAGO="IdPago";
@@ -94,18 +82,9 @@ public final class BaseDatos {
                 .append(ENTREGADO).append(" integer not null default 0, ")
                 .append(ID_PRODUCTO).append(" integer not null, ")
                 .append(" FOREIGN KEY (IdProducto) REFERENCES Productos(_id));")
-                //.append("integer not null, FOREIGN KEY (IdProducto) REFERENCES Productos(_id));")
                 .toString();
-
-        public static final String SQL_ELIMINAR_TABLA_PEDIDOS=new StringBuilder("DROP TABLE ")
-        .append(PEDIDOS)
-        .append(";")
-        .toString();
 
 
     }
-
-
-
 
 }

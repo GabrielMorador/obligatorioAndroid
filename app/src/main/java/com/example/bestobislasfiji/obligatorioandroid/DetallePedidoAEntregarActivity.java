@@ -1,13 +1,7 @@
 package com.example.bestobislasfiji.obligatorioandroid;
 
-import android.content.ContentValues;
-import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.CheckBox;
-import android.widget.Toast;
 
 public class DetallePedidoAEntregarActivity extends AppCompatActivity{
 
@@ -21,9 +15,6 @@ public class DetallePedidoAEntregarActivity extends AppCompatActivity{
     private Integer cantidad;
     private Double importe;
 
-
-
-    private CheckBox chbEntregarPedido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

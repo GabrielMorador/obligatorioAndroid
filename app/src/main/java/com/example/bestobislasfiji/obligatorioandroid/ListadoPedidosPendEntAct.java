@@ -5,14 +5,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
-import android.widget.ListView;
 
 
 public class ListadoPedidosPendEntAct extends AppCompatActivity implements ListadoPedidosPendEntFrag.OnPedidoSeleccionadoListener{
 
-   // protected ListView lvPedidosPendEntrega;
-
-  //  protected ListadoCategoriasFragment frgListadoCategorias;
 
     public static final String EXTRA_ID="EXTRA_ID";
     public static final String EXTRA_NOMBRE_CLIENTE="EXTRA_NOMBRE_CLIENTE";

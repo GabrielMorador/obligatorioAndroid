@@ -11,13 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class ListadoProductosXCategoriaFrag extends Fragment {
 
@@ -101,15 +97,11 @@ public class ListadoProductosXCategoriaFrag extends Fragment {
     {
         if (onProductoSeleccionadoListener != null) {
 
-            //Cursor cursor = ((SimpleCursorAdapter)adaptadorProductos).getCursor();
-
             Cursor listProductos=(Cursor)parent.getItemAtPosition(position);
             if(listProductos.moveToPosition(position)) {
 
 
-                // int columnaId = listProductos.getColumnIndex(BaseDatos.Prodctos.NOMBRE_PRODUCTO)
                 int columnaId = listProductos.getColumnIndex(BaseDatos.Prodctos._ID);
-                //cursor.getColumnIndex(BaseDatos.Prodctos._ID);
                 int columnaNombre = listProductos.getColumnIndex(BaseDatos.Prodctos.NOMBRE_PRODUCTO);
                 int columnaDescripcion = listProductos.getColumnIndex(BaseDatos.Prodctos.DESCRIPCION);
                 int columnaPrecio = listProductos.getColumnIndex(BaseDatos.Prodctos.PRECIO);
